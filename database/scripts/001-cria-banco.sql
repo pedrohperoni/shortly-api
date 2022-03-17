@@ -14,7 +14,7 @@ CREATE TABLE sessions (
 CREATE TABLE urls (
    id SERIAL PRIMARY KEY,
    "shortUrl" TEXT NOT NULL UNIQUE,
-   url TEXT NO NULL
+   url TEXT NOT NULL
 )
 
 CREATE TABLE usersUrls (
