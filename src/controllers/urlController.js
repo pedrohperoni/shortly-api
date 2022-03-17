@@ -32,3 +32,20 @@ export async function createUrl(req, res) {
 
 }
 
+export async function getUrl(req,res){
+   const { shortUrl } = req.params;
+   try {
+      const result = await connection.query(`
+            SELECT * FROM urls
+            WHERE "shortUrl" = $1`,
+            [shortUrl]
+            );
+  
+      if (result.rowCount === 0) {
+        return res.sendStatus(404);
+      }
+      res.status(200).send(result.rows[0]);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+}
