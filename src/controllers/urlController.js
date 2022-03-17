@@ -35,7 +35,7 @@ export async function createUrl(req, res) {
 export async function getUrl(req,res){
    const { shortUrl } = req.params;
    try {
-      const result = await connection.query(`
+      const { rows: urlResult } = await connection.query(`
             SELECT * FROM urls
             WHERE "shortUrl" = $1`,
             [shortUrl]
@@ -44,7 +44,7 @@ export async function getUrl(req,res){
       if (result.rowCount === 0) {
         return res.sendStatus(404);
       }
-      res.status(200).send(result.rows[0]);
+      res.send(urlResult).status(200)
     } catch (error) {
       res.sendStatus(500);
     }
