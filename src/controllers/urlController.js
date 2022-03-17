@@ -14,8 +14,6 @@ export async function createUrl(req, res) {
    const {link} = req.body
    const key = randomKey(8)
 
-   console.log("AAAAAAAAAAAAAAAAAAAAAAAAA", key)
-
 
    try{
 
