@@ -15,10 +15,10 @@ CREATE TABLE urls (
    id SERIAL PRIMARY KEY,
    "shortUrl" TEXT NOT NULL UNIQUE,
    url TEXT NOT NULL
-)
+);
 
 CREATE TABLE usersUrls (
    id SERIAL PRIMARY KEY,
    "userId" INTEGER NOT NULL REFERENCES users(id)
    "urlsId" INTEGER NOT NULL REFERENCES urls(id)
-)
+);
