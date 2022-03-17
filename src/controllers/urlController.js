@@ -12,7 +12,7 @@ export async function createUrl(req, res) {
      return result;
    }
    const {link} = req.body
-   const key = randomKey(8)
+   const shortUrl = randomKey(8)
 
 
    try{
@@ -21,9 +21,8 @@ export async function createUrl(req, res) {
       INSERT INTO 
          urls("shortUrl", "url")
       VALUES ($1, $2)
-      `, [key, link])
-
-      res.sendStatus(201)
+      `, [shortUrl, link])
+      res.send(shortUrl).status(201)
    
 
    } catch(error) {
